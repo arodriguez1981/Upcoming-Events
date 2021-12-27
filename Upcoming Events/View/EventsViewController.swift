@@ -12,6 +12,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var eventsTable: UITableView!
     
     
+    
+    
     var events = [Event]()
     var eventsByDay = Array<[Event]>()
     
@@ -32,7 +34,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 do {
                     self.events.removeAll(keepingCapacity: false)
                     let currentEvents = try decoder.decode([Event].self, from: data)
-                    self.events.append(contentsOf: currentEvents.sorted().reversed())
+                    self.events.append(contentsOf: currentEvents.sorted())
                     //self.findConflicts1()
                     groupAndSort()
                     
@@ -49,51 +51,44 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func findConflicts1(_ events: [Event]){  // O(n) + O(n log n) = O(n log n)
-        for i in 1...events.count - 1{   // O(n)
-            // if hay elementos del mismo dia en los que la hora final de uno sea mayor que la hora inicial de otro entonces marco ese evento como conflictivo
-            if (events[i - 1].end.day == events[i].start.day) && (events[i - 1].end.hour! > events[i].start.hour!){
-                events[i].isConflicted = true
-            }
-        }
-        self.eventsTable.reloadData()
-    }
     
     func groupAndSort(){  // Agrupor y ordenar
+        
         eventsByDay = Dictionary(grouping: self.events) { $0.start.day! }
         .sorted(by: {$0.key < $1.key})
         .map {$0.value}
+        
+//
+//
+//        for i in 0...currentEventsByDay.count - 1{
+//            let current = currentEventsByDay[i].sorted()
+//            eventsByDay.append(contentsOf: current)
+//        }
 
         for i in 0...eventsByDay.count - 1{
             findConflicts(eventsByDay[i])
         }
+        self.eventsTable.reloadData()
     }
     
     func findConflicts(_ events: [Event]){
-        var greaterElement = 0 // Para encontrar la hora mas alta del dia que voy a analizar
-        for i in 0...events.count - 1{
-            if greaterElement < events[i].end.hour! {
-                greaterElement = events[i].end.hour!
-            }
+        var eventTree = EventTree()
+        for event in events {
+            eventTree.insert(event)
+        }
+        //eventTree.printTree()
+        var overlaps = [Event]()
+
+        for event in events {
+            print("Intersections with \(event): \(eventTree.overlaps(with:event))")
+            overlaps.append(contentsOf: eventTree.overlaps(with:event))
+            //eventTree.overlaps(with:event)
+            //print(overlaps)
         }
         
-        var auxHoursEvents = Array(repeating: 0 , count: greaterElement + 2) // Creo un arreglo del tamaño de la cantidad maxima de horas
         
-        for i in 0...events.count - 1{
-            let startHour = events[i].start.hour! // Hora inicial del evento
-            let endHour = events[i].end.hour!  // Hora final del evento
-            
-            auxHoursEvents[startHour] = auxHoursEvents[startHour] + 1 // Incremento en 1 la posicion del arreglo que contiene la hora de inicio del evento
-            auxHoursEvents[endHour + 1] = auxHoursEvents[endHour] - 1 // Decremento en 1 la posicion del arreglo que contiene la hora siguiente del final del evento
-        }
         
-        for i in 1...greaterElement - 1{
-            auxHoursEvents[i] = auxHoursEvents[i - 1] + auxHoursEvents[i]
-            if auxHoursEvents[i] > 1{
-                events[i].isConflicted = true
-            }
-        }
-        self.eventsTable.reloadData()
+        
     }
     
     

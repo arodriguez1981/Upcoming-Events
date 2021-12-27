@@ -21,6 +21,7 @@
 		FA7734C32773784C00484474 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = FA7734C22773784C00484474 /* mock.json */; };
 		FA7734C527737DA400484474 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734C427737DA400484474 /* Helper.swift */; };
 		FA7734C8277382E300484474 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734C7277382E300484474 /* EventCell.swift */; };
+		FA92B2CC277A26FD00D68530 /* EventTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92B2CB277A26FD00D68530 /* EventTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		FA7734C22773784C00484474 /* mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
 		FA7734C427737DA400484474 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		FA7734C7277382E300484474 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		FA92B2CB277A26FD00D68530 /* EventTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FA7734B8277369DA00484474 /* Event.swift */,
+				FA92B2CB277A26FD00D68530 /* EventTree.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				FA7734B9277369DA00484474 /* Event.swift in Sources */,
 				FA77348C2773683700484474 /* ViewController.swift in Sources */,
 				FA7734882773683700484474 /* AppDelegate.swift in Sources */,
+				FA92B2CC277A26FD00D68530 /* EventTree.swift in Sources */,
 				FA77348A2773683700484474 /* SceneDelegate.swift in Sources */,
 				FA7734C027736F7700484474 /* EventsViewController.swift in Sources */,
 				FA7734C8277382E300484474 /* EventCell.swift in Sources */,
