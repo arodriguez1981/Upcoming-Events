@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nJc-36-CBi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--EventsViewController-->
+        <scene sceneID="tru-zN-9vT">
+            <objects>
+                <viewController storyboardIdentifier="EventsViewController" automaticallyAdjustsScrollViewInsets="NO" id="nJc-36-CBi" userLabel="EventsViewController" customClass="EventsViewController" customModule="Upcoming_Events" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UQu-1j-G2q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6M-WA-ZiE" userLabel="Events Table Container">
+                                <rect key="frame" x="8" y="52" width="398" height="750"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Bz-Wz-38R" userLabel="Events Table">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="750"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="70" id="ZZ2-Vl-WHS" userLabel="eventCell" customClass="EventCell" customModule="Upcoming_Events" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="398" height="70"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZZ2-Vl-WHS" id="faV-bX-GUG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-Xo-C5a">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="70"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PMK-td-Gvx" userLabel="Event Conflict">
+                                                                    <rect key="frame" x="355" y="20.5" width="30" height="29"/>
+                                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="MX8-4P-7J2"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="q9I-cl-JdD"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-r6-DlI" userLabel="Event Name">
+                                                                    <rect key="frame" x="8" y="8" width="345" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="uiX-AK-jTR"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VM-xD-0FF" userLabel="Event Date Time">
+                                                                    <rect key="frame" x="8" y="30" width="345" height="34"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="35" id="GcU-Qe-tmu"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="PMK-td-Gvx" firstAttribute="leading" secondItem="yuh-r6-DlI" secondAttribute="trailing" constant="2" id="3RB-SZ-iO2"/>
+                                                                <constraint firstItem="3VM-xD-0FF" firstAttribute="trailing" secondItem="yuh-r6-DlI" secondAttribute="trailing" id="RTZ-ei-9B9"/>
+                                                                <constraint firstItem="3VM-xD-0FF" firstAttribute="top" secondItem="yuh-r6-DlI" secondAttribute="bottom" constant="2" id="YiU-ll-ffG"/>
+                                                                <constraint firstAttribute="bottom" secondItem="3VM-xD-0FF" secondAttribute="bottom" constant="6" id="bIp-mO-zs3"/>
+                                                                <constraint firstItem="3VM-xD-0FF" firstAttribute="leading" secondItem="yuh-r6-DlI" secondAttribute="leading" id="fiK-ml-m1t"/>
+                                                                <constraint firstItem="yuh-r6-DlI" firstAttribute="top" secondItem="xj1-Xo-C5a" secondAttribute="top" constant="8" id="jvH-bP-3e1"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yuh-r6-DlI" secondAttribute="trailing" constant="45" id="mk3-UJ-kcU"/>
+                                                                <constraint firstItem="yuh-r6-DlI" firstAttribute="leading" secondItem="xj1-Xo-C5a" secondAttribute="leading" constant="8" id="rCD-1j-2WP"/>
+                                                                <constraint firstItem="PMK-td-Gvx" firstAttribute="centerY" secondItem="xj1-Xo-C5a" secondAttribute="centerY" id="rXi-MJ-Ndr"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="xj1-Xo-C5a" firstAttribute="height" secondItem="faV-bX-GUG" secondAttribute="height" id="CD5-sX-zSg"/>
+                                                        <constraint firstItem="xj1-Xo-C5a" firstAttribute="centerY" secondItem="faV-bX-GUG" secondAttribute="centerY" id="DIo-nR-ecs"/>
+                                                        <constraint firstItem="xj1-Xo-C5a" firstAttribute="width" secondItem="faV-bX-GUG" secondAttribute="width" id="iTA-Pa-jCh"/>
+                                                        <constraint firstItem="xj1-Xo-C5a" firstAttribute="centerX" secondItem="faV-bX-GUG" secondAttribute="centerX" id="mvT-Ez-OP0"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="eventConflict" destination="PMK-td-Gvx" id="D7V-9z-ZlU"/>
+                                                    <outlet property="eventDateTime" destination="3VM-xD-0FF" id="Ss8-8K-2FE"/>
+                                                    <outlet property="eventName" destination="yuh-r6-DlI" id="ZgW-j0-kJy"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="nJc-36-CBi" id="k4O-8D-gyi"/>
+                                            <outlet property="delegate" destination="nJc-36-CBi" id="fYe-nd-JYE"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Bz-Wz-38R" secondAttribute="bottom" id="UjC-i7-wPp"/>
+                                    <constraint firstItem="5Bz-Wz-38R" firstAttribute="leading" secondItem="d6M-WA-ZiE" secondAttribute="leading" id="Xtz-AB-512"/>
+                                    <constraint firstItem="5Bz-Wz-38R" firstAttribute="top" secondItem="d6M-WA-ZiE" secondAttribute="top" id="dmz-tH-Ubb"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Bz-Wz-38R" secondAttribute="trailing" id="r7E-ze-D5v"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9u6-La-LZS"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.95294117649999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="d6M-WA-ZiE" firstAttribute="leading" secondItem="9u6-La-LZS" secondAttribute="leading" constant="8" id="6wD-qy-XXX"/>
+                            <constraint firstItem="9u6-La-LZS" firstAttribute="bottom" secondItem="d6M-WA-ZiE" secondAttribute="bottom" constant="60" id="9zi-SS-0FS"/>
+                            <constraint firstItem="9u6-La-LZS" firstAttribute="trailing" secondItem="d6M-WA-ZiE" secondAttribute="trailing" constant="8" id="N4Y-qh-eBk"/>
+                            <constraint firstItem="d6M-WA-ZiE" firstAttribute="top" secondItem="9u6-La-LZS" secondAttribute="top" constant="8" id="gt6-FS-Zff"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tLh-Ce-mxL"/>
+                    <connections>
+                        <outlet property="eventsTable" destination="5Bz-Wz-38R" id="kG7-AG-XR7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LuG-Mb-AXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5941" y="1560"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
