@@ -7,80 +7,63 @@
 
 import Foundation
 public struct EventTree {
-    private (set) var root: Event? = nil
+    private (set) var root: EventModel? = nil
     
-    private func insert(_ eventNode: Event?, _ newEventNode: Event) -> Event {
-        guard let tmp = eventNode else { // Si el nodo no es nulo lo guardo en temp
+    
+    // Tiempo de ejecución (O log n)
+    // El valor max de cada Nodo se actualiza de ser necesario con la hora fin del evento a insertar y sirve para determinar si debo buscar en la rama derecha o la izquierda del nodo a la hora de determinar el solapamiento haciendo la busqueda mas eficiente
+    
+    private func insert(_ eventNode: EventModel?, _ newEventNode: EventModel) -> EventModel {
+        guard let tempNode = eventNode else { // Si el nodo no es nulo lo guardo en temp
             return newEventNode // de lo contrario retorno el nuevo nodo (nuevo evento)
         }
         
-        if newEventNode.end > tmp.max { // Si la hora a la que termian el evento es mayor que la maxima guardada
-            tmp.max = newEventNode.end  // Actualizo el Max del nodo actual
+        if newEventNode.end > tempNode.max { // Si la hora a la que termian el evento es mayor que la maxima guardada
+            tempNode.max = newEventNode.end  // Actualizo el Max del nodo actual (Este proceso se hara en todos loas ancestros de ese nodo) y permitira durante la busqueda de solapamiento determinar a cual rama moverme
         }
         
-        if (tmp < newEventNode) { // Si la hora a la que comienza el nuevo evento es mayor que la del evento actual debo ubicarlo a la derecha
-            if tmp.right == nil { // si no hay hijo derecho
-                tmp.right = newEventNode // le asigno el nuevo evento (nodo) al hijo derecho del nodo actual
+        if (tempNode < newEventNode) { // Si la hora a la que comienza el nuevo evento es mayor que la del evento actual debo ubicarlo a la derecha
+            if tempNode.right == nil { // si no hay hijo derecho
+                tempNode.right = newEventNode // le asigno el nuevo evento (nodo) al hijo derecho del nodo actual
             } else {
-                _ = insert(tmp.right, newEventNode) // llamo recursivamente a l funcion insertar en el subarbol derecho del nodo actual
+                _ = insert(tempNode.right, newEventNode) // llamo recursivamente a l funcion insertar en el subarbol derecho del nodo actual
             }
         } else {  //Si la hora a la que comienza el nuevo evento es menor que la del evento (nodo) actual debo ubicarlo a la izquierda siguiendo el mismo procedimiento 
-            if tmp.left == nil {
-                tmp.left = newEventNode
+            if tempNode.left == nil {
+                tempNode.left = newEventNode
             } else {
-                _ = insert(tmp.left, newEventNode)
+                _ = insert(tempNode.left, newEventNode)
             }
         }
-        return tmp
+        return tempNode
     }
     
-    
-    
-    func overlaps(acc: inout [Event], eventNode: Event?, _ event: Event) {
-        guard let tmp = eventNode else {
+    // Funcion para encontrar los eventos que se solapan
+    // eventNode ira tomando los datos del nodo que se esta visitando
+    // event es el evento actual con el cual se estara buscando si hay solapamiento
+    // Tiempo de ejecucion O(log n)
+    private func overlaps(eventNode: EventModel?, _ event: EventModel) {
+        guard let tempNode = eventNode else { // mientras haya eventos para comparar con el actual
             return
         }
         
-        if tmp != event  && ((tmp.start < event.end) && tmp.start >= event.start) {
-            tmp.isConflicted = true
-            acc.append(tmp)
+        // Si no es el nodo actual y ademas la fecha de inicio del evento es menor que la fecha fin del evento actual
+        // y la fecha de inicio del evento es mayor o igual que la fecha de inicio del evento actual
+        if tempNode != event  && ((tempNode.start < event.end) && tempNode.start >= event.start) {
+            tempNode.isConflicted = true  // marco el evento como solapado
         }
-        
-        if let l = tmp.left, l.max >= event.start {
+        if let tempLeft = tempNode.left, tempLeft.max >= event.start {
             
-            overlaps(acc: &acc, eventNode: l, event)
+            overlaps(eventNode: tempLeft, event)
         }
-        overlaps(acc: &acc, eventNode: tmp.right, event)
+        overlaps(eventNode: tempNode.right, event)
     }
     
-    private func printTree(_ tree: Event? = nil) {
-        if tree == nil {
-            print("The tree is empty!")
-            return
-        }
-        
-        if let left = tree!.left {
-            printTree(left)
-        }
-        
-        print(tree!)
-        
-        if let right = tree!.right {
-            printTree(right)
-        }
-    }
-    
-    public func printTree() {
-        printTree(root)
-    }
-    
-    mutating func insert(_ event: Event) {
+    mutating func insert(_ event: EventModel) {
         root = insert(root, event)
     }
     
-    func overlaps(with event: Event) -> [Event]{
-        var res = [Event]()
-        overlaps(acc: &res, eventNode: root, event)
-        return res
+    mutating func overlaps(with event: EventModel){
+        overlaps(eventNode: root, event)
     }
 }

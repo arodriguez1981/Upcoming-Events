@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Event: Codable{
+class EventModel: Codable{
     var title : String!
     var start: Date!
     var end: Date!
     var max: Date!
     
-    var left: Event?
-    var right: Event?
+    var left: EventModel?
+    var right: EventModel?
     var isConflicted: Bool!
     
     required init(from decoder: Decoder) throws {
@@ -29,7 +29,7 @@ class Event: Codable{
     }
 }
 
-extension Event{
+extension EventModel{
     enum CodingKeys: String, CodingKey {
         case title
         case start
@@ -45,17 +45,17 @@ extension Event{
     }
 }
 
-extension Event: Comparable {
-    static func < (lhs: Event, rhs: Event) -> Bool { lhs.start < rhs.start }
-    static func <= (lhs: Event, rhs: Event) -> Bool { lhs.start <= rhs.start }
-    static func == (lhs: Event, rhs: Event) -> Bool { lhs.start == rhs.start}
-    static func > (lhs: Event, rhs: Event) -> Bool { lhs.start > rhs.start }
-    static func >= (lhs: Event, rhs: Event) -> Bool { lhs.start >= rhs.start }
-    static func != (lhs: Event, rhs: Event) -> Bool { lhs.title != rhs.title }
+extension EventModel: Comparable {
+    static func < (lhs: EventModel, rhs: EventModel) -> Bool { lhs.start < rhs.start }
+    static func <= (lhs: EventModel, rhs: EventModel) -> Bool { lhs.start <= rhs.start }
+    static func == (lhs: EventModel, rhs: EventModel) -> Bool { lhs.start == rhs.start}
+    static func > (lhs: EventModel, rhs: EventModel) -> Bool { lhs.start > rhs.start }
+    static func >= (lhs: EventModel, rhs: EventModel) -> Bool { lhs.start >= rhs.start }
+    static func != (lhs: EventModel, rhs: EventModel) -> Bool { lhs.title != rhs.title }
     
 }
 
-extension Event: CustomStringConvertible {
+extension EventModel: CustomStringConvertible {
     var description: String {
         "Inicio: " + (Formatter.customDateTime.string(from: start)) + "\nFin: " + (Formatter.customDateTime.string(from: end))
     }

@@ -16,12 +16,13 @@
 		FA77349F2773683A00484474 /* Upcoming_EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77349E2773683A00484474 /* Upcoming_EventsTests.swift */; };
 		FA7734A92773683A00484474 /* Upcoming_EventsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734A82773683A00484474 /* Upcoming_EventsUITests.swift */; };
 		FA7734AB2773683A00484474 /* Upcoming_EventsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734AA2773683A00484474 /* Upcoming_EventsUITestsLaunchTests.swift */; };
-		FA7734B9277369DA00484474 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734B8277369DA00484474 /* Event.swift */; };
+		FA7734B9277369DA00484474 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734B8277369DA00484474 /* EventModel.swift */; };
 		FA7734C027736F7700484474 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734BF27736F7700484474 /* EventsViewController.swift */; };
 		FA7734C32773784C00484474 /* mock.json in Resources */ = {isa = PBXBuildFile; fileRef = FA7734C22773784C00484474 /* mock.json */; };
 		FA7734C527737DA400484474 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734C427737DA400484474 /* Helper.swift */; };
 		FA7734C8277382E300484474 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7734C7277382E300484474 /* EventCell.swift */; };
 		FA92B2CC277A26FD00D68530 /* EventTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92B2CB277A26FD00D68530 /* EventTree.swift */; };
+		FA98DD0D277B6B89009490B7 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98DD0C277B6B89009490B7 /* EventsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +56,13 @@
 		FA7734A42773683A00484474 /* Upcoming EventsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Upcoming EventsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7734A82773683A00484474 /* Upcoming_EventsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming_EventsUITests.swift; sourceTree = "<group>"; };
 		FA7734AA2773683A00484474 /* Upcoming_EventsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upcoming_EventsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FA7734B8277369DA00484474 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FA7734B8277369DA00484474 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		FA7734BF27736F7700484474 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		FA7734C22773784C00484474 /* mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock.json; sourceTree = "<group>"; };
 		FA7734C427737DA400484474 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		FA7734C7277382E300484474 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		FA92B2CB277A26FD00D68530 /* EventTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTree.swift; sourceTree = "<group>"; };
+		FA98DD0C277B6B89009490B7 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,11 +113,12 @@
 		FA7734862773683700484474 /* Upcoming Events */ = {
 			isa = PBXGroup;
 			children = (
+				FA7734B72773699100484474 /* Models */,
+				FA7734BE27736F3E00484474 /* Views */,
+				FA98DD0B277B68E7009490B7 /* ViewModels */,
 				FA7734C6277382CC00484474 /* Cells */,
 				FA7734C12773782900484474 /* Resources */,
-				FA7734BE27736F3E00484474 /* View */,
 				FA7734BB27736DB100484474 /* Auxiliar */,
-				FA7734B72773699100484474 /* Models */,
 				FA7734872773683700484474 /* AppDelegate.swift */,
 				FA7734892773683700484474 /* SceneDelegate.swift */,
 				FA77348B2773683700484474 /* ViewController.swift */,
@@ -147,7 +150,7 @@
 		FA7734B72773699100484474 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA7734B8277369DA00484474 /* Event.swift */,
+				FA7734B8277369DA00484474 /* EventModel.swift */,
 				FA92B2CB277A26FD00D68530 /* EventTree.swift */,
 			);
 			path = Models;
@@ -161,12 +164,12 @@
 			path = Auxiliar;
 			sourceTree = "<group>";
 		};
-		FA7734BE27736F3E00484474 /* View */ = {
+		FA7734BE27736F3E00484474 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FA7734BF27736F7700484474 /* EventsViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FA7734C12773782900484474 /* Resources */ = {
@@ -183,6 +186,14 @@
 				FA7734C7277382E300484474 /* EventCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FA98DD0B277B68E7009490B7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA98DD0C277B6B89009490B7 /* EventsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7734C527737DA400484474 /* Helper.swift in Sources */,
-				FA7734B9277369DA00484474 /* Event.swift in Sources */,
+				FA7734B9277369DA00484474 /* EventModel.swift in Sources */,
 				FA77348C2773683700484474 /* ViewController.swift in Sources */,
 				FA7734882773683700484474 /* AppDelegate.swift in Sources */,
 				FA92B2CC277A26FD00D68530 /* EventTree.swift in Sources */,
 				FA77348A2773683700484474 /* SceneDelegate.swift in Sources */,
+				FA98DD0D277B6B89009490B7 /* EventsViewModel.swift in Sources */,
 				FA7734C027736F7700484474 /* EventsViewController.swift in Sources */,
 				FA7734C8277382E300484474 /* EventCell.swift in Sources */,
 			);
