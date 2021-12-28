@@ -26,6 +26,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let day = Formatter.customDate.string(from: eventsViewModel.eventsByDay[section][0].start)
         let label = UILabel()
+        label.backgroundColor = UIColor.lightGray
         label.text = day
         return label
     }
