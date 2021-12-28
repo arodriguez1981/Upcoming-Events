@@ -38,10 +38,11 @@ public struct EventTree {
         return tempNode
     }
     
+    // Tiempo de ejecucion O(log n)
     // Funcion para encontrar los eventos que se solapan
     // eventNode ira tomando los datos del nodo que se esta visitando
     // event es el evento actual con el cual se estara buscando si hay solapamiento
-    // Tiempo de ejecucion O(log n)
+    
     private func overlaps(eventNode: EventModel?, _ event: EventModel) {
         guard let tempNode = eventNode else { // mientras haya eventos para comparar con el actual
             return
