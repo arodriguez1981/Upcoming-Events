@@ -50,7 +50,7 @@ public struct EventTree {
         
         // Si no es el nodo actual y ademas la fecha de inicio del evento es menor que la fecha fin del evento actual
         // y la fecha de inicio del evento es mayor o igual que la fecha de inicio del evento actual
-        if tempNode != event  && ((tempNode.start < event.end) && tempNode.start >= event.start) {
+        if tempNode != event && !event.isConflicted && ((tempNode.start < event.end) && tempNode.start >= event.start) {
             tempNode.isConflicted = true  // marco el evento como solapado
         }
         if let tempLeft = tempNode.left, tempLeft.max >= event.start {
